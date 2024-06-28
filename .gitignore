@@ -1,0 +1,7 @@
+/code/bin/
+/code/include/
+/code/lib/
+/code/lib64/
+/code/templates/
+/tofu/.terraform.lock.hcl
+/tofu/.terraform/
