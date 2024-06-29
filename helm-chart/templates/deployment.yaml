@@ -12,6 +12,13 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
+      initContainers:
+      - name: init-permissions
+        image: busybox
+        command: ['sh', '-c', 'chmod -R 777 /app/logs']
+        volumeMounts:
+        - name: log-volume
+          mountPath: /app/logs
       containers:
         - name: {{ .Release.Name }}
           image: 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:{{ .Values.image.tag }}
@@ -20,6 +27,9 @@ spec:
           volumeMounts:
             - name: log-volume
               mountPath: /app/logs
+          securityContext:
+            runAsUser: 1000  
+            fsGroup: 1000    
       volumes:
         - name: log-volume
           persistentVolumeClaim:

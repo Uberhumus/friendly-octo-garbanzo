@@ -8,9 +8,6 @@ module "eks" {
   vpc_id          = module.vpc.vpc_id
   subnet_ids      = module.vpc.public_subnets
 
-  cluster_security_group_id = aws_security_group.eks_cluster.id
-  node_security_group_id    = aws_security_group.eks_node.id
-
   eks_managed_node_group_defaults = {
     ami_type        = "AL2_x86_64"
     instance_type   = var.instance_type
@@ -18,12 +15,22 @@ module "eks" {
     min_size        = var.min_capacity
     max_size        = var.max_capacity
     key_name        = var.key_name
-    additional_security_group_ids = [aws_security_group.eks_node.id]
   }
 
   eks_managed_node_groups = {
     eks_nodes = {
       name = "eks-nodes"
+    }
+  }
+
+  node_security_group_additional_rules = {
+    open_app_port = {
+      description              = "Allow inbound traffic on port 30001"
+      from_port                = 30001
+      to_port                  = 30001
+      protocol                 = "tcp"
+      type                     = "ingress"
+      cidr_blocks              = ["0.0.0.0/0"]
     }
   }
 

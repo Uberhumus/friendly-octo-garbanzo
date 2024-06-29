@@ -2,8 +2,10 @@
 /code/include/
 /code/lib/
 /code/lib64/
-/code/templates/
 /tofu/.terraform.lock.hcl
 /tofu/.terraform/
 /tofu/terraform.tfvars
 /helm-chart/*tgz
+code/pyvenv.cfg
+code/__pycache__/
+code/.pytest_cache/

@@ -3,3 +3,5 @@ code/include/
 code/lib/
 code/lib64/
 code/pyvenv.cfg
+code/__pycache__/
+code/.pytest_cache/

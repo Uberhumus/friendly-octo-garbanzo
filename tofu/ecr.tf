@@ -21,7 +21,9 @@ module "ecr" {
     ]
   })
 
-    # Registry Scanning Configuration
+  repository_image_tag_mutability = "MUTABLE"
+
+  # Registry Scanning Configuration
   manage_registry_scanning_configuration = true
   registry_scan_type                     = "ENHANCED"
   registry_scan_rules = [
