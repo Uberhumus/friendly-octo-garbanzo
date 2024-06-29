@@ -1,15 +1,15 @@
 replicaCount: 1
 
 image:
-  repository: home-assignment-yotam
+  repository: 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam
   tag: latest
   pullPolicy: IfNotPresent
 
-service:
-  type: ClusterIP
-  port: 5001
-
-resources: {}
-nodeSelector: {}
-tolerations: []
-affinity: []
+# service:
+#   type: ClusterIP
+#   port: 5001
+# 
+# resources: {}
+# nodeSelector: {}
+# tolerations: []
+# affinity: []

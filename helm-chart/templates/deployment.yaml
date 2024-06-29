@@ -1,44 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "home-assignment-yotam.name" . }}
-  labels:
-    app: {{ include "home-assignment-yotam.name" . }}
+  name: {{ .Release.Name }}-deployment
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "home-assignment-yotam.name" . }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "home-assignment-yotam.name" . }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: {{ .Release.Name }}
+          image: 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:{{ .Values.image.tag }}
           ports:
-            - containerPort: {{ .Values.service.port }}
-          env:
-            - name: FLASK_APP
-              value: "main.py"
-          livenessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 30
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 30
-            periodSeconds: 10
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      nodeSelector:
-        {{- toYaml .Values.nodeSelector | nindent 8 }}
-      tolerations:
-        {{- toYaml .Values.tolerations | nindent 8 }}
-      affinity:
-        {{- toYaml .Values.affinity | nindent 8 }}
+            - containerPort: 5001
+          volumeMounts:
+            - name: log-volume
+              mountPath: /app/logs
+      volumes:
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc

@@ -47,15 +47,6 @@ resource "aws_security_group" "eks_node" {
     cidr_blocks = [module.vpc.vpc_cidr_block]
   }
 
-  # This is for debug and should be removed once the connectivity is verified
-  ingress {
-    description = "Allow all access from my IP"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = [var.my_ip]
-  }
-
   egress {
     from_port   = 0
     to_port     = 0

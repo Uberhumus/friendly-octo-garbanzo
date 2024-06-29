@@ -5,3 +5,5 @@
 /code/templates/
 /tofu/.terraform.lock.hcl
 /tofu/.terraform/
+/tofu/terraform.tfvars
+/helm-chart/*tgz

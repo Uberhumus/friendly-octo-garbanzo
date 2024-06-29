@@ -1,7 +1,0 @@
-{{- define "home-assignment-yotam.name" -}}
-{{- .Chart.Name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
-{{- define "home-assignment-yotam.chart" -}}
-{{- .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-{{- end -}}

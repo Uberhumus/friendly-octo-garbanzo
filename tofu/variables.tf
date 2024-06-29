@@ -71,9 +71,8 @@ variable "key_name" {
   default     = "home-assignment-yotam"
 }
 
-# This is for debug and should be removed once the connectivity is verified
-variable "my_ip" {
-  description = "My IP address"
+variable "supersecret" {
+  description = "Super secret token for NASA API"
   type        = string
-  default     = "77.127.134.99/32"
+  default     = "Nope"
 }
