@@ -36,6 +36,26 @@ resource "aws_iam_policy" "eks_policy" {
   })
 }
 
+resource "aws_iam_policy" "secrets_manager_read_policy" {
+  name        = "secrets_manager_read_policy"
+  description = "Policy to allow read-only access to specific secrets"
+  policy      = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret"
+            ],
+            "Resource": "arn:aws:secretsmanager:eu-west-1:975050008954:secret:SuperSecretNASAToken*"
+        }
+    ]
+}
+EOF
+}
+
 resource "aws_iam_user_policy_attachment" "ecr_policy_attachment" {
   user       = aws_iam_user.github_automation.name
   policy_arn = aws_iam_policy.ecr_policy.arn
