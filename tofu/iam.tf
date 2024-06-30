@@ -15,7 +15,6 @@ resource "aws_iam_policy" "ecr_policy" {
       {
         Effect   = "Allow",
         Action   = "ecr:*",
-        Resource = "arn:aws:ecr:eu-west-1:975050008954:repository/${var.cluster_name}"
       }
     ]
   })
@@ -30,7 +29,6 @@ resource "aws_iam_policy" "eks_policy" {
       {
         Effect   = "Allow",
         Action   = "eks:*",
-        Resource = "arn:aws:eks:eu-west-1:975050008954:cluster/${var.cluster_name}"
       }
     ]
   })
