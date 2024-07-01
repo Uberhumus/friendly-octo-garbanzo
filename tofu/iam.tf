@@ -30,6 +30,7 @@ resource "aws_iam_policy" "github_automation_ecr_policy" {
 				"ecr:InitiateLayerUpload",
 				"ecr:ReplicateImage",
 				"ecr:GetRepositoryPolicy",
+                "ecr:BatchCheckLayerAvailability",
 				"ecr:GetLifecyclePolicy"
 			],
 			"Resource": "arn:aws:ecr:eu-west-1:975050008954:repository/home-assignment-yotam"
