@@ -93,6 +93,12 @@ resource "aws_iam_user_policy_attachment" "github_automation_eks_policy_attachme
   policy_arn = aws_iam_policy.github_automation_eks_policy.arn
 }
 
+resource "aws_iam_user_policy_attachment" "github_automation_secrets_manager_policy_attachment" {
+  user       = aws_iam_user.github_automation.name
+  policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
+  
+}
+
 output "access_key_id" {
   value = aws_iam_access_key.github_automation_access_key.id
 }
