@@ -54,14 +54,14 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build . --file Dockerfile --tag 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:${{ steps.set_time.outputs.current_time }} --tag 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:latest
+        docker build . --file Dockerfile --tag 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:${{ env.current_time }} --tag 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:latest
 
     - name: Push to Amazon ECR
       uses: jwalton/gh-ecr-push@2a95936d54846ab1322b2aa1c3e3ebba78032c64
       with:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        image: home-assignment-yotam:${{ steps.set_time.outputs.current_time }}
+        image: home-assignment-yotam:${{ env.current_time }}
         region: eu-west-1
           
 
