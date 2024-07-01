@@ -28,8 +28,16 @@ spec:
             - name: log-volume
               mountPath: /app/logs
           securityContext:
-            runAsUser: 1000  
-            fsGroup: 1000    
+            runAsUser: 1000
+            fsGroup: 1000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      serviceAccountName: {{ .Release.Name }}-service-account
       volumes:
         - name: log-volume
           persistentVolumeClaim:

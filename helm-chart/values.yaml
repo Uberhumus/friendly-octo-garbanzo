@@ -4,3 +4,11 @@ image:
   repository: 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam
   tag: latest
   pullPolicy: IfNotPresent
+
+hpa:
+  minReplicas: 1
+  maxReplicas: 3
+  cpu:
+    targetAverageUtilization: 80
+  memory:
+    targetAverageUtilization: 80
