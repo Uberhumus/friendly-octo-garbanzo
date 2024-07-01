@@ -64,8 +64,8 @@ resource "aws_iam_policy" "github_automation_eks_policy" {
   })
 }
 
-resource "aws_iam_policy" "secrets_manager_read_policy" {
-  name        = "eks_secrets_manager_read_policy"
+resource "aws_iam_policy" "eks_secrets_manager_read_policy" {
+  name        = "eks_secrets_manager_read_policy_2"
   description = "Policy to allow read-only access to specific secrets"
   policy      = jsonencode({
     "Version"= "2012-10-17",

@@ -24,7 +24,7 @@ module "eks" {
   }
 
   iam_role_additional_policies = {
-    secrets_manager_read_policy = aws_iam_policy.secrets_manager_read_policy.arn
+    secrets_manager_read_policy = aws_iam_policy.eks_secrets_manager_read_policy.arn
   }
 
   node_security_group_additional_rules = {
