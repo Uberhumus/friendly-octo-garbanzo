@@ -61,7 +61,7 @@ jobs:
       with:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        image: home-assignment-yotam:${{ env.current_time }}, home-assignment-yotam:latest
+        image:  975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:${{ env.current_time }}, 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:latest
         local-image: 975050008954.dkr.ecr.eu-west-1.amazonaws.com/home-assignment-yotam:${{ env.current_time }}
         region: eu-west-1
 
