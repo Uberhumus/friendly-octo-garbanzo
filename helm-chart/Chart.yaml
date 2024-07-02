@@ -3,8 +3,3 @@ name: home-assignment-yotam
 description: A Helm chart for deploying the home-assignment-yotam service
 version: 0.1.0
 appVersion: "1.0"
-
-dependencies:
-  - name: metrics-server
-    version: 3.8.3
-    repository: https://kubernetes-sigs.github.io/metrics-server/
