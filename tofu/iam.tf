@@ -83,28 +83,6 @@ resource "aws_iam_policy" "eks_secrets_manager_read_policy" {
   })
 }
 
-resource "aws_iam_role" "oidc_service_role" {
-  name               = "oidc-service-role"
-  assume_role_policy = jsonencode({
-    "Version" = "2012-10-17",
-    "Statement" = [
-      {
-        "Effect"    = "Allow",
-        "Principal" = {
-            "Federated" = "arn:aws:iam::975050008954:oidc-provider/oidc.eks.eu-west-1.amazonaws.com/id/3C442B1EB55BEB9295B9554DF8031B1B"
-        },
-        "Action"    = "sts:AssumeRoleWithWebIdentity",
-        "Condition" = {
-          "StringEquals" = {
-            "oidc.eks.eu-west-1.amazonaws.com/id/3C442B1EB55BEB9295B9554DF8031B1B:sub" = "system:serviceaccount:default:home-assignment-yotam-service-account",
-            "oidc.eks.eu-west-1.amazonaws.com/id/3C442B1EB55BEB9295B9554DF8031B1B:aud" = "sts.amazonaws.com"
-          }
-        }
-      }
-    ]
-  })
-}
-
 resource "aws_iam_user_policy_attachment" "github_automation_ecr_policy_attachment" {
   user       = aws_iam_user.github_automation.name
   policy_arn = aws_iam_policy.github_automation_ecr_policy.arn
@@ -119,11 +97,6 @@ resource "aws_iam_user_policy_attachment" "github_automation_secrets_manager_pol
   user       = aws_iam_user.github_automation.name
   policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
   
-}
-
-resource "aws_iam_role_policy_attachment" "oidc_service_role_attachment" {
-  role       = aws_iam_role.oidc_service_role.name
-  policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
 }
 
 output "access_key_id" {

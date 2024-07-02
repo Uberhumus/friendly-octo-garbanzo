@@ -20,11 +20,12 @@ module "eks" {
   eks_managed_node_groups = {
     eks_nodes = {
       name = "eks-nodes"
+      # MFer why don't you document this?
+      iam_role_additional_policies = {
+          policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
+      }
+      
     }
-  }
-
-  iam_role_additional_policies = {
-    secrets_manager_read_policy = aws_iam_policy.eks_secrets_manager_read_policy.arn
   }
 
   node_security_group_additional_rules = {

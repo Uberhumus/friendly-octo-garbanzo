@@ -37,7 +37,6 @@ spec:
             limits:
               memory: "256Mi"
               cpu: "500m"
-      serviceAccountName: {{ .Release.Name }}-service-account
       volumes:
         - name: log-volume
           persistentVolumeClaim:
