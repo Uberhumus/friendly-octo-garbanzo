@@ -7,7 +7,7 @@ module "secrets_manager" {
   recovery_window_in_days = 7
 
   # Policy
-  create_policy       = false
+  create_policy = false
 
   # Version
   secret_string = var.supersecret

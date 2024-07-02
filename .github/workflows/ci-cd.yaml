@@ -53,12 +53,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-#     - name: Set current_time variable
-#       id: set_time
-#       run: |
-#         current_time=$(date +%s)
-#         echo "current_time=$current_time" >> $GITHUB_ENV
-# 
     - name: Build Docker image
       run: |
         docker build . --file Dockerfile --tag home-assignment-yotam:${{ github.run_number }}-${{ github.head_ref || github.ref_name }}

@@ -9,12 +9,12 @@ module "eks" {
   subnet_ids      = module.vpc.public_subnets
 
   eks_managed_node_group_defaults = {
-    ami_type        = "AL2_x86_64"
-    instance_type   = var.instance_type
-    desired_size    = var.desired_capacity
-    min_size        = var.min_capacity
-    max_size        = var.max_capacity
-    key_name        = var.key_name
+    ami_type      = "AL2_x86_64"
+    instance_type = var.instance_type
+    desired_size  = var.desired_capacity
+    min_size      = var.min_capacity
+    max_size      = var.max_capacity
+    key_name      = var.key_name
   }
 
   eks_managed_node_groups = {
@@ -22,20 +22,20 @@ module "eks" {
       name = "eks-nodes"
       # MFer why don't you document this?
       iam_role_additional_policies = {
-          policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
+        policy_arn = aws_iam_policy.eks_secrets_manager_read_policy.arn
       }
-      
+
     }
   }
 
   node_security_group_additional_rules = {
     open_app_port = {
-      description              = "Allow inbound traffic on port 30001"
-      from_port                = 30001
-      to_port                  = 30001
-      protocol                 = "tcp"
-      type                     = "ingress"
-      cidr_blocks              = ["0.0.0.0/0"]
+      description = "Allow inbound traffic on port 30001"
+      from_port   = 30001
+      to_port     = 30001
+      protocol    = "tcp"
+      type        = "ingress"
+      cidr_blocks = ["0.0.0.0/0"]
     }
   }
 

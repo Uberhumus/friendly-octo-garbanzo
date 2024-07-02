@@ -29,14 +29,14 @@ module "ecr" {
   registry_scan_rules = [
     {
       scan_frequency = "SCAN_ON_PUSH"
-      filter         = [
+      filter = [
         {
           filter_type = "WILDCARD"
           filter      = "*"
         }
       ]
     }
-    ]
+  ]
 
   tags = {
     Terraform   = "true"
