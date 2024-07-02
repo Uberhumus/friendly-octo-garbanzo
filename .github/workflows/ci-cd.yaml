@@ -84,4 +84,4 @@ jobs:
         namespace: default
         # chart-path: helm/
         name: home-assignment-yotam
-        action: list
+        action: list; ls -alh
