@@ -73,6 +73,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps: 
+    - name: Whoami
+      run: ls -alh; pwd; which aws
+
     - name: Deploy Helm chart
       # uses: bitovi/github-actions-deploy-eks-helm@17fcd3c5f699b979d63d15ab0900ad0ed3edb238
       uses: bitovi/github-actions-deploy-eks-helm@v1.2.10
