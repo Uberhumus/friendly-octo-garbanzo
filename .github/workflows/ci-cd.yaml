@@ -82,7 +82,6 @@ jobs:
         aws-region: eu-west-1
         cluster-name: home-assignment-yotam
         namespace: default
-        chart-path: helm/
+        # chart-path: helm/
         name: home-assignment-yotam
-        create-namespace: false
-        update-deps: false
+        action: list
