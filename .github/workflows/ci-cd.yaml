@@ -84,3 +84,4 @@ jobs:
         chart-path: helm/
         config-file: helm/values.yaml
         name: home-assignment-yotam
+        namespace: default
