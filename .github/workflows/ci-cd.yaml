@@ -82,6 +82,6 @@ jobs:
         aws-region: eu-west-1
         cluster-name: home-assignment-yotam
         chart-path: helm/
-        config-file: helm/values.yaml
+        config-files: helm/values.yaml
         name: home-assignment-yotam
         namespace: default
