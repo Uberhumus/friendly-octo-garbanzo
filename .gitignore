@@ -5,7 +5,7 @@
 /tofu/.terraform.lock.hcl
 /tofu/.terraform/
 /tofu/terraform.tfvars
-/helm-chart/*tgz
+# /helm-chart/*tgz
 code/pyvenv.cfg
 code/__pycache__/
 code/.pytest_cache/
