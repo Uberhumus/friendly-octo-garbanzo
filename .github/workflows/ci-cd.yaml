@@ -74,12 +74,15 @@ jobs:
 
     steps: 
     - name: Deploy Helm chart
-      uses: bitovi/github-actions-deploy-eks-helm@17fcd3c5f699b979d63d15ab0900ad0ed3edb238
+      # uses: bitovi/github-actions-deploy-eks-helm@17fcd3c5f699b979d63d15ab0900ad0ed3edb238
+      uses: bitovi/github-actions-deploy-eks-helm@1.2.10
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
         cluster-name: home-assignment-yotam
         namespace: default
-        chart-path: /github/workspace/helm/
+        chart-path: helm/
         name: home-assignment-yotam
+        create-namespace: false
+        update-deps: false
