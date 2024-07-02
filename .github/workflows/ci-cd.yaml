@@ -81,5 +81,5 @@ jobs:
         aws-region: eu-west-1
         cluster-name: home-assignment-yotam
         namespace: default
-        chart-path: ./helm/
+        chart-path: /github/workspace/helm/
         name: home-assignment-yotam
